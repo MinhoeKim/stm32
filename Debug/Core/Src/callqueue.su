@@ -1,0 +1,4 @@
+../Core/Src/callqueue.c:14:6:Uart3_EnQueue	16	static
+../Core/Src/callqueue.c:21:6:u3_increase_point_value	16	static
+../Core/Src/callqueue.c:31:10:Uart3_DeQueue	16	static
+../Core/Src/callqueue.c:38:6:Uart3_Is_Empty	4	static
