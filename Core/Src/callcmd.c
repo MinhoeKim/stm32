@@ -12,6 +12,15 @@
 #include<stdarg.h>
 #include <errno.h>
 #include <sys/unistd.h>
+#include<stdlib.h>
+#include<stdint.h>
+#include"stm32f4xx.h"
+#include"cmsis_os.h"
+#include"FreeRTOS.h"
+#include"task.h"
+#include"stdbool.h"
+#include"dht11.h"
+#include"rtc.h"
 
 typedef struct
 {
@@ -471,7 +480,17 @@ const Cmd_tbl cmd_ctbl[] = {
 		{"help",          monitor_chelp,"monitor help"},
 		{"ls",  monitor_lshelp,"Command List"},
 		{"dm", dsp_mem, "Display Memory"},
-		{"cm", chg_mem, "Change Memory"}
+		{"cm", chg_mem, "Change Memory"},
+		{"dht11", DHT11,"DHT11"},
+		{"rtc",RTCTest,"RTCTest"},
+
+		{"settime",SETTime,"SETTime"},
+
+		{"distime",DisTime,"DisTime"},
+		{"setalarm",AlarmSet,"AlarmSet"},
+		{"rtcalarm",AlarmSet,"rtcalarmset"},
+		{0,0,0}
+
 };
 
 int dsp_mem(int argc,char*argv[])
@@ -604,4 +623,126 @@ int chg_mem(int argc,char *argv[])
 
 	}
 	return(1);
+
+
 }
+
+int DHT11(int argc,char *argv[])
+{
+	printf("dht11 humidity & temperature \r\n");
+	DWT_Delay_Init();
+	while(1)
+	{
+		read_dht11_dat();
+		osDelay(1000);
+	}
+	return 0;
+}
+
+
+void delayMicroseconds(int time)
+{
+		DWT_Delay_us(time);
+}
+
+void Delay_us(uint32_t us)//72MHz
+{
+	uint32_t count=us*12;
+	while(count--);
+}
+
+int AlarmSet(int argc,char *argv[])
+{
+	unsigned int hour, minute, second;
+
+	if(argc == 4)
+	{
+		sscanf(argv[1],"%x",&hour);
+		sscanf(argv[2],"%x",&minute);
+		sscanf(argv[3],"%x",&second);
+		if(!((hour >=0)&&(hour <=0x23)))
+		{
+			printf("Invalid Hour = %x\r\n",hour);
+			return 0;
+		}
+		else if(!((minute >=0)&&(minute <=0x59)))
+		{
+			printf("Invalid Minute = %x\r\n",minute);
+			return 0;
+		}
+		else if(!((second>=0)&&(second <= 0x59)))
+		{
+			printf("Invalid Second = %x\r\n",minute);
+			return 0;
+		}
+		set_alarm(hour,minute,second);
+		printf("set Alarm %x:%x:%x\r\n",hour,minute,second);
+		unsigned char AlarmFlag;
+		AlarmFlag = 0x00;
+	}
+	else
+	{
+		printf("useage: setalarm hour minute second\r\n");
+		return 0;
+	}
+	return 0;
+}
+
+int SETTime(int argc, char *argv[])
+{
+	unsigned hour, minute, second;
+
+	char buffer[30];
+
+	if(argc ==4)
+	{
+		sscanf(argv[1],"%x",&hour);
+		sscanf(argv[2],"%x",&minute);
+		sscanf(argv[3],"%x",&second);
+		if(!((hour >=0)&&(hour <=0x23)))
+		{
+			printf("Invalid Hour = %x\r\n",hour);
+			return 0;
+		}
+		else if(!((minute >=0)&&(minute <=0x59)))
+		{
+			printf("Invalid Minute = %x\r\n",minute);
+			return 0;
+		}
+		else if(!((second>=0)&&(second <= 0x59)))
+		{
+			printf("Invalid Second = %x\r\n",minute);
+			return 0;
+		}
+		set_time_only(hour,minute,second);
+		//printf("set Time %d:%d:%d\r\n",hour, minute, second);
+		printf("complete\r\n");
+		//return 0;
+	}
+	else
+	{
+		printf("useage: settime hour minute second\r\n");
+		//return 0;
+	}
+	//return 0;
+}
+
+int DisTime(int argc,char *argv[])
+{
+	int i;
+	for(i = 0; i<10 ; i++)
+	{
+		get_time();
+		//osDelay(1000);
+	}
+	return 0;
+}
+
+int RTCTest(int argc,char *argv[])
+{
+	rtc_test();
+	return 0;
+}
+
+
+

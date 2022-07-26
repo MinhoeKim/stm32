@@ -92,6 +92,8 @@ extern void onl_monitor(unsigned char c);
 #define USB_PowerSwitchOn_GPIO_Port GPIOG
 #define USB_OverCurrent_Pin GPIO_PIN_7
 #define USB_OverCurrent_GPIO_Port GPIOG
+#define DHT11_Pin GPIO_PIN_8
+#define DHT11_GPIO_Port GPIOC
 #define USB_SOF_Pin GPIO_PIN_8
 #define USB_SOF_GPIO_Port GPIOA
 #define USB_VBUS_Pin GPIO_PIN_9

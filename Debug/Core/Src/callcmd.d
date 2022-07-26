@@ -19,7 +19,6 @@ Core/Src/callcmd.o: ../Core/Src/callcmd.c ../Core/Inc/callcmd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
@@ -50,7 +49,9 @@ Core/Src/callcmd.o: ../Core/Src/callcmd.c ../Core/Inc/callcmd.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/freeRTOS.h
+ ../Core/Inc/dwt_stm32_delay.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/freeRTOS.h \
+ ../Core/Inc/dht11.h ../Core/Inc/rtc.h
 ../Core/Inc/callcmd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -72,7 +73,6 @@ Core/Src/callcmd.o: ../Core/Src/callcmd.c ../Core/Inc/callcmd.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
@@ -103,4 +103,7 @@ Core/Src/callcmd.o: ../Core/Src/callcmd.c ../Core/Inc/callcmd.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+../Core/Inc/dwt_stm32_delay.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/freeRTOS.h:
+../Core/Inc/dht11.h:
+../Core/Inc/rtc.h:

@@ -1,0 +1,6 @@
+../Core/Src/rtc.c:14:6:set_time	32	static
+../Core/Src/rtc.c:44:6:set_time_only	40	static
+../Core/Src/rtc.c:61:6:set_time_date	32	static
+../Core/Src/rtc.c:89:6:set_alarm	56	static
+../Core/Src/rtc.c:111:6:get_time	32	static
+../Core/Src/rtc.c:124:6:rtc_test	56	static

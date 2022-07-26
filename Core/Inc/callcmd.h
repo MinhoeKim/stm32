@@ -10,12 +10,15 @@
 
 
 #include<stdio.h>
+#include<stdlib.h>
+#include<stdint.h>
 #include"string.h"
 #include"stm32f4xx_hal.h"
 #include "cmsis_os.h"
 #include"FreeRTOS.h"
 #include "task.h"
 #include "cmsis_os.h"
+#include "dwt_stm32_delay.h"
 #include<stdbool.h>
 
 #define byte unsigned char
@@ -56,5 +59,15 @@ int wl_mon(int argc,char *argv[]);
 int wr_loop(int argc,char *argv[]);
 
 int dsp_mem(int argc,char*argv[]);
+
+int DHT11(int argc,char *argv[]);
+
+int AlarmSet(int argc,char *argv[]);
+
+int SETTime(int argc, char *argv[]);
+
+int DisTime(int argc,char *argv[]);
+
+int RTCTest(int argc,char *argv[]);
 
 #endif /* INC_CALLCMD_H_ */
